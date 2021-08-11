@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - proyecto_mascotas</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!--Mis estilos -->
+    <link rel="stylesheet" href="~/css/style.css" />
+    <!--Libreria CSS extra -->
+    <link rel="stylesheet" href="~/css/swiper.min.css"/>
+    <link rel="stylesheet" href="~/css/animate.min.css" />
+    <link rel="stylesheet" href="~/css/forum.css" />
+    <link rel="stylesheet" id="lana-pet-print-css" href="~/css/lana-pet-print.min.css" type="text/css">
+    <link rel="stylesheet" id="lana-pet-icon-css" href="~/css/lana-pet-icon.min.css" type="text/css">
+    <link rel="stylesheet" id="lana-pet-theme-css" href="~/css/lana-pet-theme.min.css" type="text/css">
+    
+    <link rel="stylesheet" id="montserrat-css"
+          href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link rel="stylesheet" id="open-sans-css"
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/x-icon" href="~/icono.ico" />
+</head>
+<body>
+<header class="mb-custom w-100">
+    <div class="container">
+        <div class="row">
+            <div class="header-area header-transparent">
+                <div class="main-header ">
+                    <div class="header-top d-none d-sm-block">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="d-flex justify-content-between flex-wrap align-items-center">
+                                        <div class="header-info-right">
+                                            <ul class="header-social">
+                                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                                <li> <a href="#"><i class="fab fa-instagram"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="header-info-left">
+                                            <ul>
+                                                <li><i class="fas fa-map-marker-alt"></i> Av. El Exodo, Y4600 San Salvador de Jujuy, Jujuy</li>
+                                                <li><i class="fas fa-phone-alt"></i> +54 (388) 4000000</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-bottom">
+                        <div class="container">
+                            <div class="row align-items-center">
+
+                                <div class="d-flex align-items-center col-xl-2 col-lg-2">
+                                   
+                                        <a href="#"><img src="~/img/logo.png" alt="icono de la pagina web" style="width: 110px"></a>
+                                        
+                                    
+                                </div>
+                                <div class="col-xl-10 col-lg-10">
+
+                                    <div class="main-menu f-right d-none d-lg-block">
+                                         
+                                        <nav>
+                                           
+                                           @if (User.Identity.IsAuthenticated)
+                                           
+                                           {
+                                            <ul class ="d-flex align-items-center" id="navigation">
+                                                <li><a href="/Home/Index">Home</a></li>
+                                                <li><a href="/Services/Index">Servicios</a></li>
+                                                <li><a href="/About/Index">Sobre Nosotros</a></li>
+                                                <li><a href="/Forum/Index">Foros</a></li>
+                                                <li><a href="/Contact/Contacto">Contacto</a></li>
+                                                
+                                                <li class="d-flex">
+                                                    <button type="button" class="header-btn header-right-btn f-right ml-2 align-items-center" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                        <i class="fas fa-user mr-2"></i> <span class="pl-2 py-2">@User.Identity.Name</span>
+                                                    </button>
+                                                    <div class="dropdown-menu submenu-login">
+                                                        <a class="dropdown-item py-1" href="#"><i class="fas fa-id-card"></i><span class="pl-2">Perfil</span> </a>
+                                            
+                                                        <div class="dropdown-divider my-0"></div>
+                                                        <a class="dropdown-item py-1"  asp-area="" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i><span class="pl-2">Logout</span></a>
+                                                    </div>
+                                                </li>
+                                              
+                                            </ul>
+                                            }
+                                            else
+                                            {
+                                              <ul class ="d-flex align-items-center" id="navigation">
+                                                <li><a href="/Home/Index">Home</a></li>
+                                                <li><a href="/Services/Index">Servicios</a></li>
+                                                <li><a href="/About/Index">Sobre Nosotros</a></li>
+                                                <li><a href="/Contact/Contacto">Contacto</a></li>
+                                                <li class="d-flex">
+                                                    <div class="header-right-btn f-right ml-2">
+                                                        <a href="/Account/Login" class="header-btn">Acceder</a>
+                                                    </div>
+                                                    <div class="header-right-btn ml-2">
+                                                        <a href="/Account/Register" class="header-btn">Registrar</a>
+                                                    </div>
+                                                </li>
+                                              
+                                            </ul>     
+                                            }
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+   
+        <div class="my-5">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    
+    <footer class="footer bg-dark text-white">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footer-text text-center text-md-left">
+                        &copy; @DateTime.Now.Year - Todos los derechos reservados
+    
+                    </p>
+                </div>
+                <div class="d-flex col-md-6 justify-content-end pr-3">
+                   <p>Desarrollado por Bautista Joaquin Freelancer</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+     <!--Libreria jS extra -->
+    <script src="~/js/swiper.min.js"></script>
+    <script type="text/javascript" src="~/js/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

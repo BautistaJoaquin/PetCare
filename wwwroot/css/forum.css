@@ -1,0 +1,105 @@
+/* Banner */
+.bg-banner{
+    background-color: #0094DF;
+}
+
+.dc-questionsection {
+    width: 100%;
+    float: left;
+    padding: 5px;
+    margin: 0 0 30px;
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid #eff2f5;
+}
+
+.dc-postquestion {
+    width: 60%;
+    float: left;
+    padding: 44px 50px;
+}
+
+.dc-description {
+    width: 100%;
+    float: left;
+}
+
+.dc-questionsection figure {
+    margin: 0;
+    right: 50px;
+    bottom: 5px;
+    position: absolute;
+}
+
+/* Search */
+.dc-innerbanner {
+    float: left;
+    width: 100%;
+}
+
+.dc-forumform {
+    width: 100%;
+    float: left;
+    padding: 20px;
+    background-color: #e8f6ff;
+}
+
+.dc-btnarea {
+    float: left;
+    width: 100%;
+}
+
+.dc-forumform .dc-btnarea button[type=submit], .dc-forumform .dc-btnarea a {
+    line-height: 32px;
+}
+.dc-btn[type="submit"] {
+    background: transparent;
+    border-color: #0094DF;
+    width: 110px;
+    color: rgb(85, 83, 83);
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.dc-btn:hover {
+    color: white;
+    background-color: #0094DF;
+}
+
+.dc-searchresult-head{
+   
+    border-bottom: #0094DF 3px solid;
+}
+
+.hr-post{
+    border: #ff3e7e 2px solid;
+}
+
+.dc-post-tittle{
+    font-style: italic;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-post{
+    margin-right: 50px;
+  
+}
+
+.btn-create{
+    background-color: #ff3e7e !important;
+}
+
+.fa-comment-dots{
+    color: white;
+}
+
+.bar-right{
+    background-color: #ff3e7e;
+}
+
+#FileName{
+    border: #0094DF 2px solid;
+    background-color: crimson;
+}
+

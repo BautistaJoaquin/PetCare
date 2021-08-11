@@ -1,0 +1,249 @@
+﻿@model IEnumerable<proyecto_mascotas.Models.ForumViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+@* Apartado de slider *@
+<div class="bg-dark py-5">
+    <div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active img-fluid">
+                <img class="d-block w-100 img-fluid" src="~/img/adopcion-img.jpg" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>ADOPTA A UNA MASCOTA</h5>
+                    <p>Ellos estan buscando un hogar y mucho cariño.</p>
+                </div>
+            </div>
+            <div class="carousel-item img-fluid">
+                <img class="d-block w-100 img-fluid" src="~/img/vacunacion-img.jpeg" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>VACUNA A TU MASCOTA</h5>
+                    <p>Piensa siempre en la salud de tu mascota.</p>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <img class="d-block w-100 img-fluid" src="~/img/veterinarios-img.jpg" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>CONSULTA VETERINARIA</h5>
+                    <p>Encuentra los puntos de ubicación del centro veterinario mas cercano a tu hogar.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    </div>
+</div>
+
+@* Apartado de quienes somos *@
+<div class="container my-4">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-6 text-center">
+                    <h1 class="mb-4 font-weight-bold animated fadeInDown" data-scroll-animate="fadeInDown">¿Quienes Somos?</h1>
+                    <p data-scroll-animate="fadeInUp" class="animated fadeInUp">
+                        Somos una organizacion sin fines de lucro y en conjunto con otras, con la mision de asistir, contribuir a su salud y ayudar a los animales sin hogar a encontrar una familia que le brinden mucho cariño.
+                    </p>
+                    <div class="lana-hr lana-hr-4 border-primary animated zoomIn" data-scroll-animate="zoomIn"></div>
+                </div>
+            </div>
+</div>
+
+@* Servicios *@
+<div id="our-services-container" class="container-fluid bg-dark text-white lana-bg-image-white-large-staring-cat-body-indoor section-py--large py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-6 text-center">
+                    <h1 class="mb-4 font-weight-bold animated fadeInDown" data-scroll-animate="fadeInDown">Nuestros Servicios</h1>
+                    <p data-scroll-animate="fadeInUp" class="animated fadeInUp">Disponemos de estos servicios para ayudar a las mascotas.</p>
+                    <div class="lana-hr lana-hr-4 border-primary mt-4 mb-5 animated zoomIn" data-scroll-animate="zoomIn"></div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 col-sm-6 col-lg-3 py-4 py-lg-0">
+                    <div class="lana_service type-lana_service card service-card bg-transparent text-center">
+                        <div class="card-img-top img-fluid animated zoomIn" data-scroll-animate="zoomIn">
+                            <img class ="servicio-img" src="~/img/servicios/adopcion-img.png" alt="">
+                        </div>
+                        <div class="card-body animated fadeIn" data-scroll-animate="fadeIn">
+                            <h5 class="post-title card-title">
+                                Adopción
+                            </h5>
+                            <p class="post-text card-text">
+                                Nuestros amigos de cuatro patas estan esperando tener un hogar donde vivir y sobre todo buscan tu cariño, animate y adopta a uno.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 py-4 py-lg-0">
+                    <div class="lana_service type-lana_service card service-card bg-transparent text-center">
+                        <div class="card-img-top img-fluid animated zoomIn" data-scroll-animate="zoomIn">
+                            <img class ="servicio-img" src="~/img/servicios/vacunacion-img.png" alt="">
+                        </div>
+                        <div class="card-body animated fadeIn" data-scroll-animate="fadeIn">
+                            <h5 class="post-title card-title">
+                                Vacunación
+                            </h5>
+                            <p class="post-text card-text">
+                                La salud de las mascotas es importante, por eso para prevenir enfermedades hay que vacunarlos, no lo olvides.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 py-4 py-lg-0">
+                    <div class="lana_service type-lana_service card service-card bg-transparent text-center">
+                        <div class="card-img-top img-fluid animated zoomIn" data-scroll-animate="zoomIn">
+                            <img class ="servicio-img" src="~/img/servicios/centro-veterinario-img.png" alt="">
+                        </div>
+                        <div class="card-body animated fadeIn" data-scroll-animate="fadeIn">
+                            <h5 class="post-title card-title">
+                                Centros Veterinarios
+                            </h5>
+                            <p class="post-text card-text">
+                                Es importante conocer la ubicacion de los centros veterinarios para poder acudir ante alguna emergencia o consulta.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 py-4 py-lg-0">
+                    <div class="lana_service type-lana_service card service-card bg-transparent text-center">
+                        <div class="card-img-top img-fluid animated zoomIn" data-scroll-animate="zoomIn">
+                            <img class ="servicio-img" src="~/img/servicios/voluntarios-img.png" alt="">
+                        </div>
+                        <div class="card-body animated fadeIn" data-scroll-animate="fadeIn">
+                            <h5 class="post-title card-title">
+                                Voluntarios
+                            </h5>
+                            <p class="post-text card-text">
+                                Si compartes el amor por las mascotas y deseas ayudarnos acercate, mientras mas seamos mas podemos hacer por ellos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+@* Donación *@
+<div class="container py-5">
+    <div class="wants-wrapper">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-7 col-md-8">
+                <div class="text-center">
+                    <h2>Danos una mano</h2>
+                    <p>Son muchos los animales que necesitan ayuda y solos no podemos, por eso te pedimos una colaboración cualquier cantidad que puedas enviarnos es bien recibida.</p>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="#" class="btn-donate">Leer Más</a>
+                        <a href="#" class="header-btn ml-20 ml-3">Hacer una donación</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Historias Felices *@
+<div class="bg-dark">
+    <div class="container pb-4">
+        <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-6 text-center text-white py-4">
+            <h1 class="mb-4 font-weight-bold animated fadeInDown" data-scroll-animate="fadeInDown">Historias Felices</h1>
+            <p class="text-center text-white">
+                Estamos felices de poder ayudar a nuestras mascotas a encontrar una familia, mira y conoce sus historias.
+            </p>
+        </div>
+        </div>
+        <div class="d-flex justify-content-around mb-4">
+            <div class="card card-history">
+                <div class="box pt-0">
+                    <div class="pt-0 img">
+                        <img src="~/img/historias/historia1.jpg">
+                    </div>
+                    <h2 class="name-history">Hercules<br></h2>
+                    <p>Despues de pasar por tanto Hercules encontro una familia que sane sus heridas con mucho cariño.</p>
+                    <span>
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+            <div class="card card-history">
+                <div class="box pt-0">
+                    <div class="pt-0 img">
+                        <img src="~/img/historias/historia2.jpg">
+                    </div>
+                    <h2 class="name-history">Manchita<br></h2>
+                    <p>Despues de pasar por tanto Hercules encontro una familia que sane sus heridas con mucho cariño.</p>
+                    <span>
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+            <div class="card card-history">
+                <div class="box pt-0">
+                    <div class="pt-0 img">
+                        <img src="~/img/historias/historia3.jpg">
+                    </div>
+                    <h2 class="name-history">Daisy<br></h2>
+                    <p>Despues de pasar por tanto Hercules encontro una familia que sane sus heridas con mucho cariño.</p>
+                    <span>
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        </div>   
+    </div>   
+</div>
+
+
+@* 
+<div class="container pb-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-6 text-center py-4">
+            <h1 class="mb-4 font-weight-bold animated fadeInDown" data-scroll-animate="fadeInDown">Últimos posteos</h1>
+            <p class="text-center mx-5">
+                Regularmente se dejan comentarios en nuestro foros sobre todo lo referente a nuestras mascotas, información general, cuidados, vacunación y adoptación.
+            </p>
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="d-flex justify-content-around mb-4">
+            <div class="card card-history">
+                <div class="box pt-0">
+                    <p class="text-muted">@Html.DisplayFor(model => item.FechaDate)</p>
+                    <h2 class="name-history">@Html.DisplayFor(model => item.Tittle)<br></h2>
+                    <p>@Html.DisplayFor(model => item.Desc)</p>
+                </div>
+            </div>
+        </div>   
+        }
+    </div>   
+</div>  *@

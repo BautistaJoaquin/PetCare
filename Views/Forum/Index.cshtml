@@ -1,0 +1,168 @@
+@model IEnumerable<proyecto_mascotas.Models.ForumViewModel>
+
+@{
+    ViewData["Title"] = "Listado de Posteo";
+}
+
+<div class="dc-haslayout dc-parent-section healthforum-temp-main">
+    <div class="container">
+        <div class="row">
+           
+                <div class="dc-questionsection bg-banner">
+                    <div class="dc-askquery">
+                        <div class="dc-postquestion">
+                            <div class="dc-title">
+                                <span>Postea todo lo que desees</span>
+                                <h2>FORO MASCOTERO</h2>
+                            </div>
+                            <div class="dc-description">
+                                <p>La información que buscas, de la mano de profesionales, voluntarios y muchas personas que persiguen el mismo objetivo.
+                                </p>
+                            </div>
+
+                        </div>
+                        <figure>
+                            <img src="~/img/perro-foro.png"
+                                alt="perro asistente" style="width: 400px;height:314px">
+                        </figure>
+
+                    </div>
+                </div>
+                <div class="dc-innerbanner">
+                    <form class="dc-formtheme dc-forumform" method="get" id="search_form_healthforum">
+                        <fieldset class="d-flex">
+                            <div class="col-8 form-group">
+                                <input type="text" name="search" class="form-control" value=""
+                                    placeholder="Ingresa tu consulta">
+                            </div>
+                            <div class="col-4 dc-btnarea">
+                                <button type="submit" class="dc-btn">Search</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="bg-dark w-100 mt-3">
+                    <div class="dc-searchresult-head d-flex  mx-5 mt-3 mb-2">
+                        <h4 class="dc-post-tittle col-8">Deja tu comentario</h4>
+                        <div class="col-4 dc-rightarea d-flex justify-content-end">
+                            <div class="dc-select ">
+                                <select name="orderby" class="orderby_healthforum">
+                                        <option value="">Ordenar por</option>
+                                        <option selected="selected" value="ID">Ultimos</option>
+                                        <option value="title">Recientes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                                    
+                    <div class="dc-post-body ">
+                        @foreach (var item in Model)
+                        {
+                            <div class="dc-post card mx-5 my-3 ">
+                                <div class="container">
+                                    <div class="dc-post-head d-flex mt-2 mx-3">
+                                        <div class="d-flex col-8 align-items-center">
+                                            <img class="mr-3 rounded-circle" style="width:50px"
+                                                                    src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="foto de perfil">
+                                            <h4>@User.Identity.Name</h4>
+                                        </div>
+                                        <p class="col-4 text-center"><strong>Fecha: </strong><em>@Html.DisplayFor(model => item.FechaDate)</em></p>
+                                    </div>
+                                    <hr class="hr-post">
+                                    <div class="dc-post-body my-2 mx-3">
+                                        <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body">@Html.DisplayFor(model =>
+                                                                item.Tittle)</a></h6>
+                                        <div class="dc-description">
+                                                <p>@Html.DisplayFor(model => item.Desc)</p>
+                                        </div>
+                                        <img class="mx-auto d-block" src="~/Foro/@item.FileName" style="width: 800px;height:600px"/>
+                                    </div>
+                                    <hr class="hr-post">
+                                    <div class="d-flex dc-post-bottom mx-3">
+                                        <p class="text-muted col-8">Publicado a las <span class="text-secondary font-weight-bold">@Html.DisplayFor(model =>
+                                                                item.HoraTime) horas</span></p>
+                                        <div class="col-4 text-muted small text-center"> 
+                                            <span class="d-none d-sm-inline-block"><i class="far fa-eye"></i> 19</span> <span><i class="far fa-comment ml-2"></i> 3</span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>                    
+                            </div> 
+
+
+                        }
+                                   
+                    </div>                    
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="btn-post d-flex justify-content-center my-4"> <button onclick="location.href='@Url.Action("Create", "Forum")'" class="btn btn-primary has-icon"
+        type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="feather feather-plus mr-2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg> Nuevo Posteo </button>
+</div>
+@* <h1>Categorías</h1>
+<p>
+    <a asp-action="Create">Crear nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tittle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraTime) 
+
+            </th>
+
+              <th>
+                <p>Imagen</p> 
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.Tittle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.FileName)
+                        </td>
+                        <td>
+                          @Html.DisplayFor(model => item.Desc)
+                        </td>
+                        <td>
+                           @Html.DisplayFor(model => item.FechaDate)
+                        </td>
+                         <td>
+                           @Html.DisplayFor(model => item.HoraTime)
+                        </td>
+                        <td>
+                           <img src="~/Foro/@item.FileName" />
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Idposteo">Editar</a> |
+                            <a asp-action="Details" asp-route-id="@item.Idposteo">Detalles</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Idposteo">Eliminar</a>
+                        </td>
+                    </tr>
+            }
+    </tbody>
+</table> 
+ *@
