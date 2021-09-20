@@ -1,0 +1,68 @@
+@model proyecto_mascotas.ViewModels.ForumViewModel
+
+@{
+    ViewData["Title"] = "Editar Posteo";
+}
+
+<div class="container bg-dark">
+    <div class="d-flex ">
+        <div class="col-8 my-5">
+            <h1 class="text-center text-white">Modificar un comentario</h1>
+
+            <hr class="hr-post"/>
+            <div class="row">
+                <div class="col-10 mx-5">
+                    <form asp-action="Edit" method="POST" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Tittle" class="text-white control-label"></label>
+                            <input asp-for="Tittle" class="form-control" />
+                            <span asp-validation-for="Tittle" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Desc" class="text-white control-label"></label>
+                            <textarea asp-for="Desc" class="form-control" style="height: 200px;"></textarea>
+                            <span asp-validation-for="Desc" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="text-white pl-0 col-10" asp-for="ForumImage" class="text-white control-label"></label>
+                            <div class="custom-file">
+                                <input asp-for="ForumImage" class="custom-file-input" />
+                                <label class="custom-file-label" for="customFile">Elegir Imagen</label>
+                            </div>
+                            <span asp-validation-for="ForumImage" class="text-danger"></span>
+                            <img src="~/img/Foro/@Model.Imagen" class="img-thumbnail mt-3" height="80" width="80" asp-append-version="true" />
+                        </div> 
+
+                        <div class="form-group mt-5">
+                            <input type="submit" value="Guardar" class="btn btn-primary btn-block" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="bar-right col-4 d-flex align-items-center">
+            <div class="container my-5">            
+                <p class="text-center"><i class="far fa-comment-dots fa-10x"></i></p>   
+                <p class="text-white">Recuerda seguir las reglas y términos, pero sobretodo manten el respeto con la comunidad.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4 font-weight-bold">
+        <a asp-action="Index"><i class="fas fa-chevron-left"></i><span class="pl-3">Regresar</span> </a>
+</div> 
+
+@section Scripts {
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,7 +1,11 @@
-@model IEnumerable<proyecto_mascotas.Models.ForumViewModel>
+@using Microsoft.AspNetCore.Http;
+@model IEnumerable<proyecto_mascotas.Models.Forum>
 
 @{
     ViewData["Title"] = "Listado de Posteo";
+
+        var userId = Context.Session.GetString("userId");
+
 }
 
 <div class="dc-haslayout dc-parent-section healthforum-temp-main">
@@ -64,7 +68,7 @@
                                         <div class="d-flex col-8 align-items-center">
                                             <img class="mr-3 rounded-circle" style="width:50px"
                                                                     src="https://www.bootdey.com/img/Content/avatar/avatar1.png" alt="foto de perfil">
-                                            <h4>@User.Identity.Name</h4>
+                                            <h4>@Html.DisplayFor(model => item.Post_by)</h4>
                                         </div>
                                         <p class="col-4 text-center"><strong>Fecha: </strong><em>@Html.DisplayFor(model => item.FechaDate)</em></p>
                                     </div>
@@ -75,7 +79,7 @@
                                         <div class="dc-description">
                                                 <p>@Html.DisplayFor(model => item.Desc)</p>
                                         </div>
-                                        <img class="mx-auto d-block" src="~/Foro/@item.FileName" style="width: 800px;height:600px"/>
+                                        <img class="mx-auto d-block" src="~/img/Foro/@item.Imagen" style="width: 800px;height:600px"/>
                                     </div>
                                     <hr class="hr-post">
                                     <div class="d-flex dc-post-bottom mx-3">
@@ -86,7 +90,12 @@
                                         </div>
                                         
                                     </div>
-                                </div>                    
+                                </div>  
+                                <div class="d-flex justify-content-center mb-3">
+                                <a asp-action="Edit" asp-route-id="@item.ForumId" class="btn btn-sm btn-info rounded-0 mr-2"><i class="fa fa-pencil-alt"></i></a>
+                                <a asp-action="Details" asp-route-id="@item.ForumId" class="btn btn-sm btn-success rounded-0 mr-2"><i class="fas fa-info-circle"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.ForumId" class="btn btn-sm btn-danger rounded-0"><i class="fa fa-trash-alt"></i></a>
+                                </div>    
                             </div> 
 
 
@@ -98,71 +107,9 @@
     </div>
 </div>
 
-<div class="btn-post d-flex justify-content-center my-4"> <button onclick="location.href='@Url.Action("Create", "Forum")'" class="btn btn-primary has-icon"
-        type="button"> <svg xmlns="http://www.w3.org/2000/svg" width="24"
-            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="feather feather-plus mr-2">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-        </svg> Nuevo Posteo </button>
+<div class="btn-post d-flex justify-content-center my-4"> 
+    <td>
+        <a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa fa-plus-circle"></i> Agregar Nuevo</a>
+    
+    </td>
 </div>
-@* <h1>Categorías</h1>
-<p>
-    <a asp-action="Create">Crear nuevo</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Tittle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FileName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Desc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoraTime) 
-
-            </th>
-
-              <th>
-                <p>Imagen</p> 
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-            @foreach (var item in Model) {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => item.Tittle)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => item.FileName)
-                        </td>
-                        <td>
-                          @Html.DisplayFor(model => item.Desc)
-                        </td>
-                        <td>
-                           @Html.DisplayFor(model => item.FechaDate)
-                        </td>
-                         <td>
-                           @Html.DisplayFor(model => item.HoraTime)
-                        </td>
-                        <td>
-                           <img src="~/Foro/@item.FileName" />
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Idposteo">Editar</a> |
-                            <a asp-action="Details" asp-route-id="@item.Idposteo">Detalles</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Idposteo">Eliminar</a>
-                        </td>
-                    </tr>
-            }
-    </tbody>
-</table> 
- *@

@@ -1,4 +1,4 @@
-@model proyecto_mascotas.Models.ForumViewModel;
+@model proyecto_mascotas.ViewModels.ForumViewModel
 
 @{
     ViewData["Title"] = "Crear Posteo";
@@ -12,7 +12,7 @@
             <hr class="hr-post"/>
             <div class="row">
                 <div class="col-10 mx-5">
-                    <form asp-action="Create" enctype="multipart/form-data">
+                    <form asp-action="Create" method="POST" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="Tittle" class="text-white control-label"></label>
@@ -25,9 +25,9 @@
                             <span asp-validation-for="Desc" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-4">
-                            <label class="text-white pl-0 col-10" asp-for="FileName" class="text-white control-label"></label>
-                            <input class="p-1 text-white" asp-for="FileName" id="FileName" name="files" type="file" accept="image/*"/>
-                            <span asp-validation-for="FileName" class="text-danger"></span>
+                            <label class="text-white pl-0 col-10" asp-for="ForumImage" class="text-white control-label"></label>
+                            <input class="p-1 text-white" asp-for="ForumImage"/>
+                            <span asp-validation-for="ForumImage" class="text-danger"></span>
                         
                         </div> 
 

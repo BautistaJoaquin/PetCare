@@ -11,9 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using proyecto_mascotas.Models;
-using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.Extensions.FileProviders;
-using System.IO;
 using Microsoft.AspNetCore.Http;
 
 namespace proyecto_mascotas
@@ -31,19 +28,12 @@ namespace proyecto_mascotas
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddSession();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDBContext>(c => c.UseSqlServer(connectionString));
-   
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
-            services.Configure<IdentityOptions>(options =>
-        { // User settings.
-            options.User.AllowedUserNameCharacters =
-                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ ";
-            options.User.RequireUniqueEmail = false;
-        });
+            
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -54,14 +44,15 @@ namespace proyecto_mascotas
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                
+
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-         
+            app.UseCookiePolicy();
             app.UseRouting();
-            app.UseAuthentication();
+            app.UseSession();
+           
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

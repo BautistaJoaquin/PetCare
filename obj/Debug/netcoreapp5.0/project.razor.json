@@ -15629,8 +15629,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Cursos\\ComunidadIT\\TPFinal\\proyecto_mascotas\\Views\\Forum\\Edit.cshtml",
+      "TargetPath": "Views\\Forum\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Cursos\\ComunidadIT\\TPFinal\\proyecto_mascotas\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Cursos\\ComunidadIT\\TPFinal\\proyecto_mascotas\\Views\\Forum\\Delete.cshtml",
+      "TargetPath": "Views\\Forum\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -153,6 +153,13 @@ D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\bin\Debug\netcoreapp5.0\Microsof
 D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\bin\Debug\netcoreapp5.0\Microsoft.Extensions.Identity.Core.dll
 D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\bin\Debug\netcoreapp5.0\Microsoft.Extensions.Identity.Stores.dll
 D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\obj\Debug\netcoreapp5.0\Razor\Views\Forum\Index.cshtml.g.cs
-D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\obj\Debug\netcoreapp5.0\Razor\Views\Forum\Create.cshtml.g.cs
 D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\obj\Debug\netcoreapp5.0\Razor\Views\About\Index.cshtml.g.cs
 D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\obj\Debug\netcoreapp5.0\Razor\Views\Services\Index.cshtml.g.cs
+D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\obj\Debug\netcoreapp5.0\proyecto_mascotas.MvcApplicationPartsAssemblyInfo.cs
+D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\bin\Debug\netcoreapp5.0\proyecto_mascotas.StaticWebAssets.xml
+D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\bin\Debug\netcoreapp5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\bin\Debug\netcoreapp5.0\Microsoft.AspNetCore.Identity.UI.dll
+D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\bin\Debug\netcoreapp5.0\Microsoft.Extensions.FileProviders.Embedded.dll
+D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\obj\Debug\netcoreapp5.0\Razor\Views\Forum\Delete.cshtml.g.cs
+D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\obj\Debug\netcoreapp5.0\Razor\Views\Forum\Edit.cshtml.g.cs
+D:\Cursos\ComunidadIT\TPFinal\proyecto_mascotas\obj\Debug\netcoreapp5.0\Razor\Views\Forum\Create.cshtml.g.cs

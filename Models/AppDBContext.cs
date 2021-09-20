@@ -1,42 +1,40 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace proyecto_mascotas.Models
 {
-    public class AppDBContext : IdentityDbContext
+    public class AppDBContext : DbContext
     {
-        private readonly DbContextOptions _options;
 
         public AppDBContext(DbContextOptions options): base(options)
         {
-            _options = options; 
+            
 
         }
-        public virtual DbSet<ForumViewModel> foro {get;set;}
+        public DbSet<Forum> Forum {get;set;}
+
+        public DbSet<ForumUser> ForumUser {get;set;}
+
+        public DbSet<User> User {get;set;}
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //  modelBuilder.Entity<ForumViewModel>(entity =>
-            // {
-            //     entity.ToTable("posteos");
-            //     entity.HasKey(e => e.idposteo);
-            //     entity.Property(e => e.idposteo).HasColumnName("idposteo");
+           
+            modelBuilder.Entity<ForumUser>()
+        .HasKey(fu => new { fu.ForumId , fu.UserId});
 
-            //     entity.Property(e => e.Titulo)
-            //         .IsRequired()
-            //         .HasColumnName("titulo")
-            //         .HasMaxLength(50)
-            //         .IsUnicode(false);
-
-            //     entity.Property(e => e.Desc)
-            //         .HasColumnName("descripcion")
-            //         .HasMaxLength(255)
-            //         .IsUnicode(false);
-
-            //     entity.Property(e => e.ImagePost)
-            //         .HasColumnName("imagen");
-                    
-            // });
+        modelBuilder.Entity<ForumUser>()
+        .HasOne(fu => fu.Forum)
+        .WithMany(p => p.ForumUser)
+        .HasForeignKey(p => p.ForumId);  
+        
+        modelBuilder.Entity<ForumUser>()
+        .HasOne(fu => fu.User)
+        .WithMany(p => p.ForumUser)
+        .HasForeignKey(p => p.UserId);
+                       
         } 
     }
 }

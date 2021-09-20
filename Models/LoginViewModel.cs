@@ -9,16 +9,11 @@ namespace proyecto_mascotas.Models
 {
     public class LoginViewModel
     {
-        
-        [Required(ErrorMessage ="El campo Email es requerido")]
-        [EmailAddress]
-        [Display(Name = "Correo Electrónico")]
-
+        [Required(ErrorMessage = "Debes ingresar un Email")]
         public string Email { get; set; }
-
-        [Required(ErrorMessage ="El campo contraseña es requerida.")]
-        [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
+ 
+        [Required(ErrorMessage = "Debes ingresar una contraseña")]
+        [StringLength(10, MinimumLength = 6)]
         public string Password { get; set; }
 
         [Display(Name = "Recuerdame?")]

@@ -1,100 +1,115 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using proyecto_mascotas.Models;
+using Microsoft.Extensions.Options;
+using System.Linq;
+using System.Text;
+using System;
+using Microsoft.AspNetCore.Http;
 
 namespace proyecto_mascotas.Controllers
 {
    public class AccountController : Controller
     {
+        private readonly AppDBContext _context;
 
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
-
-        public AccountController(UserManager<IdentityUser> userManager,
-                              SignInManager<IdentityUser> signInManager)
+        public AccountController(AppDBContext context)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _context = context;
+        }
+       
+        [HttpGet]
+        public IActionResult Login()
+        {
+           return View();
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userdetails = await _context.User.SingleOrDefaultAsync(m => m.Email == model.Email && m.Password ==model.Password);
+                if(userdetails == null)
+                {
+                    ModelState.AddModelError("Password","Inicio de Sesion Invalido.");
+                    return View("Login");
+                }
+                HttpContext.Session.SetString("userId",userdetails.Name);
+                TempData["userId"]= userdetails.UserId;
+                TempData["userName"]= userdetails.Name;
+                Console.WriteLine(userdetails.UserId);
+            }
+            else
+            {
+                return View("Login");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        [ValidateAntiForgeryToken]
+
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            System.Console.WriteLine(model.Email,model.Password);
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser
+
+                User user = new User
                 {
-                    UserName = model.Email,
+                    Name = model.Name,
                     Email = model.Email,
+                    Password = model.Password
+                   
                 };
 
-                var result = await _userManager.CreateAsync(user, model.Password);
+                _context.Add(user);
+                await _context.SaveChangesAsync();
 
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-
-                    return RedirectToAction("index", "Home");
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-
-                ModelState.AddModelError(string.Empty, "Error en Registro");
-
+                
             }
-            return View(model);
-        }
-
-
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Login()
-        {   
-            return View();
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel user)
-        {
-            if (ModelState.IsValid)
-           
+            else
             {
-                var result = await _signInManager.PasswordSignInAsync(user.Email, user.Password, user.RememberMe, false);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-
-                ModelState.AddModelError(string.Empty, "Error en Login");
-
+                ModelState.AddModelError(string.Empty, "Error en Registro");
+                return View();
             }
-            return View(user);
+            // return RedirectToAction("Index", "Home");
+            return View(model);
+
         }
 
-        [AllowAnonymous]
-        public async Task<IActionResult> Logout()
+        
+        public  IActionResult Logout()
         {
-            await _signInManager.SignOutAsync();
-
-            return RedirectToAction("Login");
+            HttpContext.Session.Clear();
+            return View("Login");
         }
+
+        // //create a string MD5
+        // public static string GetMD5(string str)
+        // {
+        //     MD5 md5 = new MD5CryptoServiceProvider();
+        //     byte[] fromData = Encoding.UTF8.GetBytes(str);
+        //     byte[] targetData = md5.ComputeHash(fromData);
+        //     string byte2String = null;
+
+        //     for (int i = 0; i < targetData.Length; i++)
+        //     {
+        //         byte2String += targetData[i].ToString("x2");
+
+        //     }
+        //     return byte2String;
+        // }
+
+       
     }
 }
